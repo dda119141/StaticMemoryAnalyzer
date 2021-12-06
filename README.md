@@ -1,4 +1,4 @@
-tag-read-writer
+StaticMemoryAnalyzer
 ===============
 
 StaticMemoryAnalyzer is a lightweight tool that aim to generate
