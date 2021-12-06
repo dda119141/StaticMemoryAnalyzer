@@ -1,0 +1,156 @@
+{
+    "input_file_names" : [
+        "SGW_RNS400_MC_BankA.map",
+        "SGW_RNS400_SC2_BankA.map"
+    ],
+    "section_size_position": 2,
+    "max_lines_per_file": 400,
+    "core" : [
+        {
+            "core_id" : 0,
+            "memory" : [
+            {
+                "memory_id" : "pflash",
+                "start_section" :  "0x800F4000",
+                "end_section" : "0x801F9FFF",
+                "short_id" : "internal non-volatile memory - PF0",
+                "max_size" :  "1048 KB"        
+            },
+            {
+                "memory_id" : "data_ram",
+                "start_section":  "0x70000000",
+                "end_section" : "0x7003BFFF",
+                "short_id" : "DSPR SRAM",
+                "max_size" :  "240 KB"        
+            },
+            {
+                "memory_id" : "program_ram",
+                "start_section" :  "0x70100000",
+                "end_section" : "0x7010FFFF",
+                "short_id" : "PSPR SRAM",
+                "max_size" :  "64 KB"        
+            },
+            {
+                "memory_id" : "local_volatile_memory",
+                "start_section" :  "0xB0000000",
+                "end_section" : "0xB000FFFF",
+                "short_id" : "LMU SRAM",
+                "max_size" :  "40 KB"        
+            },
+            {
+                "memory_id" : "local_volatile_memory_1",
+                "start_section" :  "0xB0040000",
+                "end_section" : "0xB005FFFF",
+                "short_id" : "LMU SRAM (non cached)",
+                "max_size" :  "128 KB"        
+            }
+            ]
+        },
+        {
+            "core_id" : 1,
+            "memory" : [
+            {
+                "memory_id" : "pflash",
+                "start_section" :  "0x80300000",
+                "end_section" : "0x804FFFFF",
+                "short_id" : "internal non-volatile memory - PF1",
+                "max_size" :  "1536 KB"        
+            },            
+            {
+                "memory_id" : "data_ram",
+                "start_section":  "0x60000000",
+                "end_section" : "0x6003BFFF",
+                "short_id" : "DSPR SRAM",
+                "max_size" :  "240 KB"        
+            },
+            {
+                "memory_id" : "program_ram",
+                "start_section" :  "0x60100000",
+                "end_section" : "0x6010FFFF",
+                "short_id" : "PSPR SRAM",
+                "max_size" :  "64 KB"        
+            },
+            {
+                "memory_id" : "local_volatile_memory",
+                "start_section" :  "0xB0010000",
+                "end_section" : "0xB001FFFF",
+                "short_id" : "LMU SRAM",
+                "max_size" :  "64 KB"        
+            }
+            ]
+        },
+        {
+            "core_id" : 2,
+            "memory" : [
+            {
+                "memory_id" : "pflash",
+                "start_section" :  "0x80600000",
+                "end_section" : "0x8077FFFF",
+                "short_id" : "internal non-volatile memory - PF2",
+                "max_size" :  "1536 KB"        
+            },                        
+            {
+                "memory_id" : "data_ram",
+                "start_section":  "0x50000000",
+                "end_section" : "0x50017FFF",
+                "short_id" : "DSPR SRAM",
+                "max_size" :  "96 KB"        
+            },
+            {
+                "memory_id" : "program_ram",
+                "start_section" :  "0x50100000",
+                "end_section" : "0x5010FFFF",
+                "short_id" : "PSPR SRAM",
+                "max_size" :  "64 KB"        
+            },
+            {
+                "memory_id" : "local_volatile_memory",
+                "start_section" :  "0xB0020000",
+                "end_section" : "0xB002FFFF",
+                "short_id" : "LMU SRAM",
+                "max_size" :  "64 KB"        
+            },
+            {
+                "memory_id" : "default_application_ram",
+                "start_section" :  "0xB0400000",
+                "end_section" : "0xB040FFFF",
+                "short_id" : "DAM SRAM",
+                "max_size" :  "64 KB"        
+            }
+            ]            
+        },
+        {
+            "core_id" : 3,
+            "memory" : [
+            {
+                "memory_id" : "pflash",
+                "start_section" :  "0x80900000",
+                "end_section" : "0x809FFFFF",
+                "short_id" : "internal non-volatile memory - PF3",
+                "max_size" :  "640 KB"        
+            },                                    
+            {
+                "memory_id" : "data_ram",           
+                "start_section":  "0x40000000",
+                "end_section" : "0x40017FFF",
+                "short_id" : "DSPR SRAM",
+                "max_size" :  "96 KB"        
+            },
+            {
+                "memory_id" : "program_ram",
+                "start_section" :  "0x40100000",
+                "end_section" : "0x4010FFFF",
+                "short_id" : "PSPR SRAM",
+                "max_size" :  "64 KB"        
+            },
+            {
+                "memory_id" : "local_volatile_memory",            
+                "start_section" :  "0xb0030000",
+                "end_section" : "0xb003FFFF",
+                "short_id" : "LMU SRAM",
+                "max_size" :  "64 KB"        
+            }
+            ]            
+        }
+    ]
+}
