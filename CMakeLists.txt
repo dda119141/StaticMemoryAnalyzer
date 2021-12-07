@@ -2,13 +2,15 @@ cmake_minimum_required(VERSION 3.5)
 
 project(StaticMemoryAnalyzer VERSION 1.0 LANGUAGES CXX)
 
-find_package(nlohmann_json 3.2.0 REQUIRED)
+if (NOT TARGET StaticMemoryAnalyzer)
+    find_package(nlohmann_json 3.10.24 REQUIRED)
+endif()
 
 add_executable(StaticMemoryAnalyzer src/StaticMapAnalyzer.cpp)
 
 target_include_directories(StaticMemoryAnalyzer PRIVATE 
     include/
-    extern/single_include)
+    extern/single_include/)
 
 target_compile_options(StaticMemoryAnalyzer PRIVATE
      $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
