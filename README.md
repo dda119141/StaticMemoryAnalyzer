@@ -15,5 +15,4 @@ The code is meant to work on the following compilers:
 
 
 ## License
-See the `LICENSE` file for details. StaticMemoryAnalyzer is licensed under the
-MIT license.
+StaticMemoryAnalyzer is licensed under the MIT license.
