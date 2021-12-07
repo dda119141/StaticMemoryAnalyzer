@@ -10,9 +10,7 @@
 
 int main()
 {
-
 	try {
-
 		lineParser pPars;
 		pPars.update_total_values();
 	}
