@@ -16,10 +16,10 @@ using json = nlohmann::json;
 
 namespace mapAnalyser {
 	static const std::vector<std::string> core_descritption = {
-		" -- Autosar Zone 2\t ********************************************",
-		" -- CAN routing Engine - multizone\t ****************************",
-		" -- Autosar Zone 1\t ********************************************",
-		" -- Ethernet reception / transmission, proxies - Zone 1, Zone 2 and Bridge zone\t ****************************"
+		" -- core 0 brief description\t ********************************************",
+		" -- core 1 brief description\t ****************************",
+		" -- core 2 brief description\t ********************************************",
+		" -- core 3 brief description\t ****************************"
 	};
 }
 
@@ -339,7 +339,7 @@ public:
 
 	bool update_total_values()
 	{
-		output_file << "\n-- ---------- Developped by Maxime Moge - Maxime.Moge@de.bosch.com ----------------\n";
+		output_file << "\n-- ---------- Developped by Maxime Moge - dda119141@gmail.com ----------------\n";
 		output_file << "---- ---------- ---------------------------------------------------- ----------------\n";
 		output_file << "---- ---------- ---------------------------------------------------- ----------------\n";
 		output_file << "---- ---------- ---------------------------------------------------- ----------------\n";
