@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.9)
+
+set(CMAKE_VERBOSE_MAKEFILE on)
 
 project(StaticMemoryAnalyzer VERSION 1.0 LANGUAGES CXX)
 
@@ -13,10 +15,14 @@ add_custom_command(PRE_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_CURRENT_SOURCE_DIR}/config/memory_map.aurixTC38x.json.in
         $<TARGET_FILE_DIR:StaticMemoryAnalyzer>
+    DEPENDS memory_map.aurixTC38x.json.in
 )
 
 add_custom_target(copyConfig ALL
     DEPENDS $<TARGET_FILE_DIR:StaticMemoryAnalyzer>/memory_map.json)
+
+# MESSAGE( STATUS "CMAKE_CURRENT_SOURCE_DIR: " ${CMAKE_CURRENT_SOURCE_DIR} )
+# file(GENERATE OUTPUT "creatingoui.log" CONTENT $<TARGET_FILE_DIR:StaticMemoryAnalyzer>)
 
 target_include_directories(StaticMemoryAnalyzer PRIVATE 
     include/
