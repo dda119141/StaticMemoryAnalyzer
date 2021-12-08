@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
 
-set(CMAKE_VERBOSE_MAKEFILE on)
-
 project(StaticMemoryAnalyzer VERSION 1.0 LANGUAGES CXX)
+
+include(GNUInstallDirs)
 
 add_executable(StaticMemoryAnalyzer src/StaticMapAnalyzer.cpp)
 
@@ -33,4 +33,11 @@ target_compile_options(StaticMemoryAnalyzer PRIVATE
 
 # require C++17
 target_compile_features(StaticMemoryAnalyzer INTERFACE cxx_std_17)
+
+install(TARGETS StaticMemoryAnalyzer
+        CONFIGURATIONS Debug
+        RUNTIME DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug/bin)
+install(TARGETS StaticMemoryAnalyzer
+        CONFIGURATIONS Release
+        RUNTIME DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Release/bin)
 

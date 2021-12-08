@@ -6,6 +6,7 @@
 #define STATICMAPANALYZER_H
 
 #include <string>
+#include <utility>
 #include <unordered_map>
 #include "json.hpp"
 #include <sstream>
@@ -78,34 +79,52 @@ namespace parser
 		}
 	}
 
-	std::string find_entry(const std::string& parse_subject, unsigned int position)
-	{
-		std::regex words_regex("(\\S+)");
+	class entry_list {
+	private:
+		std::regex words_regex = {}; 
+		std::sregex_iterator words_begin = {};
+		std::sregex_iterator words_end = {};
+		decltype(std::distance(words_begin, words_end)) entries_found = 0;
 
-		auto words_begin = std::sregex_iterator(parse_subject.begin(),
-			parse_subject.end(), words_regex);
-
-		const auto words_end = std::sregex_iterator();
-
-		const auto entries_found = std::distance(words_begin, words_end);
-		signed int index = 0;
-
-		while (index < entries_found) {
-			std::smatch match = *words_begin++;
-			if (index == position) {
-				return match.str();
-			}
-			index = index + 1;
+	public:
+		entry_list(const std::string& parse_subject) :
+			words_regex("(\\S+)")
+			, words_begin(std::sregex_iterator(parse_subject.begin(),
+				parse_subject.end(), words_regex))
+			, words_end(std::sregex_iterator())
+			, entries_found(std::distance(words_begin, words_end))
+		{
 		}
 
-		//position parameter > number of entries found
-		//throw std::out_of_range("position out of range");
-		return std::string("");
-	}
+		std::string find_entry(unsigned int position) const
+		{
+			const auto find_ent = [this](unsigned int position) -> std::string
+			{
+				unsigned int index = 0;
+
+				auto words_begin_ = this->words_begin;
+
+				while (index < this->entries_found) {
+					std::smatch match = *words_begin_++;
+					if (index == position) {
+						return match.str();
+					}
+					index = index + 1;
+				}
+
+				//position parameter > number of entries found
+				//throw std::out_of_range("position out of range");
+				return std::string("");
+			};
+
+			return find_ent(position);
+		}
+	};
 
 	int find_numeric_entry(const std::string& parse_subject, unsigned int position)
 	{
-		const auto entry_str = find_entry(parse_subject, position);
+		//const auto entry_str = find_entry(parse_subject, position);
+		const auto entry_str = entry_list(parse_subject).find_entry(position);
 
 		if (entry_str == std::string("")) {
 			return -1;
@@ -164,7 +183,7 @@ struct ram_section
 
 class MemSectionPattern
 {
-	uint8_t m_core;
+	unsigned int m_core;
 
 	friend class coreUnit;
 	MemSectionPattern() = default;
@@ -173,7 +192,7 @@ public:
 
 	std::unordered_map<std::string, struct ram_section> ram_sections;
 
-	explicit MemSectionPattern(uint8_t core): m_core(core)
+	explicit MemSectionPattern(unsigned int core): m_core(core)
 	{
 	}
 };
